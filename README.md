@@ -4,4 +4,6 @@
 
 ![Code Size](https://img.shields.io/github/languages/code-size/aungtunlinn1992/Verilog-Tutorial?style=social)
 
+![Commit Date](https://img.shields.io/github/last-commit/aungtunlinn1992/Verilog-Tutorial?style=plastic)
+
 my verilog tutorials
