@@ -10,12 +10,12 @@ PriorityEncoder uut(.In(Input), .Out(Output));
 
 initial
 begin : apply_stimulus
-	for(Input = 4'b1000; Input > 0;  )
+	for(Input = 4'b1000; Input > 0; Input = Input >> 1'b1 )
 	begin
 	#10
 	$display("Input = %b, Output = %b", Input, Output );
-	Input = Input >> 1'b1;
 	end
+	#10
 	$display("Input = %b, Output = %b", Input, Output );
 end
 
