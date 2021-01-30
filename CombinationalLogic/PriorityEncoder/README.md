@@ -57,5 +57,23 @@ module PriorityEncoder(input [3:0] In,
 endmodule
 ```
 ![image](images/PriorityEncoder_case.png)
+```verilog
+module PriorityEncoder(input [3:0] In,
+                       output reg[2:0] Out);
+							  
+	always @*
+	casez(In)
+	4'b1???: Out = 3'b100;
+	4'b01??: Out = 3'b011;
+	4'b001?: Out = 3'b010;
+	4'b0001: Out = 3'b001;
+	4'b0000: Out = 3'b000;
+	
+	endcase					  
+endmodule
+```
+![image](images/PriorityEncoder_casez.png)
+## using casez statement
+
 
 ## Test Bench Waveform and Result ![image](images/test_bench.png)
