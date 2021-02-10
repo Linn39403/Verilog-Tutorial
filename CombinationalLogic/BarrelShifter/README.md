@@ -24,4 +24,24 @@ endmodule
 ```
 ![image](images/BarrelShifter_1.png)
 
+
+```verilog
+module BarrelShifter(
+input[7:0] a,       //input data
+input[2:0] amt,     //shift amount(0-7)
+input dir,          //0->LeftShift, 1->RightShift
+output [7:0] y);//shifted result
+
+wire [7:0] s0,s1;
+
+assign s0 = ( dir ) ? (( amt[0] == 1'b1 ) ? {a [0  ],a [7:1]} :  a) : //Right Shift 1bit
+                      (( amt[0] == 1'b1 ) ? {a [6:0],a [7  ]} :  a) ; //Left  Shift 1bit
+assign s1 = ( dir ) ? (( amt[1] == 1'b1 ) ? {s0[1:0],s0[7:2]} : s0) : //Right Shift 2bits
+                      (( amt[1] == 1'b1 ) ? {s0[5:0],s0[7:6]} : s0) ; //Left  Shift 2bits	
+assign y  = ( amt[2] == 1'b1 ) ? {s1[3:0],s1[7:4]} : s1;            //Shift 4bits
+								  
+endmodule
+```
+![image](images/BarrelShifter_2.png)
+
 ## Test Bench Waveform and Result ![image](images/testbench.png)
